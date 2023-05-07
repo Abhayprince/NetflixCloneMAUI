@@ -72,7 +72,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Models\" />
+	  <Folder Include="Controls\" />
+	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 </Project>

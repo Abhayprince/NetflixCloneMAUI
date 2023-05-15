@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
+using NetflixCloneMAUI.Pages;
+using NetflixCloneMAUI.Services;
+using NetflixCloneMAUI.ViewModels;
 
 namespace NetflixCloneMAUI;
 
@@ -9,15 +13,23 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				fonts.AddFont("Poppins-Regular.ttf", "PoppinsRegular");
+				fonts.AddFont("Poppins-Semibold.ttf", "PoppinsSemibold");
 			});
 
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+		builder.Services.AddHttpClient(TmdbService.TmdbHttpClientName,
+			httpClient => httpClient.BaseAddress = new Uri("https://api.themoviedb.org"));
+
+		builder.Services.AddSingleton<TmdbService>();
+		builder.Services.AddSingleton<HomeViewModel>();
+		builder.Services.AddSingleton<MainPage>();
 
 		return builder.Build();
 	}

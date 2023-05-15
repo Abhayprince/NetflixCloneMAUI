@@ -69,10 +69,18 @@
 	  <None Remove="Resources\Images\rate.svg" />
 	  <None Remove="Resources\Images\search.svg" />
 	  <None Remove="Resources\Images\share.svg" />
+	  <None Remove="Resources\Images\user.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controls\" />
 	</ItemGroup>
 
 </Project>

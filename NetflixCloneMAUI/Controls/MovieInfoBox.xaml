@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NetflixCloneMAUI.Controls.MovieInfoBox"
+             xmlns:controls="clr-namespace:NetflixCloneMAUI.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Name="this"
+             Padding="0"
+             Margin="0">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Ellipse" x:Key="iconBg">
+                <Setter Property="HeightRequest" Value="25"/>
+                <Setter Property="WidthRequest" Value="25"/>
+                <Setter Property="Fill" Value="#3c3c3c"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style TargetType="Image" x:Key="iconImg">
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="WidthRequest" Value="20"/>
+                <Setter Property="Aspect" Value="AspectFill"/>
+            </Style>
+            <Style TargetType="Label" x:Key="iconBtnText">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontSize" Value="11"/>
+                <Setter Property="TextColor" Value="#9d9d9d"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+    <Border BindingContext="{x:Reference this}"
+            StrokeShape="RoundRectangle 10, 10, 0, 0"
+            StrokeThickness="0"
+            BackgroundColor="#2b2b2b"
+            Margin="0"
+            Padding="0">
+        <VerticalStackLayout Padding="0">
+            <Grid RowDefinitions="Auto, Auto, Auto"
+                  ColumnDefinitions="120, *"
+                  Padding="10"
+                  ColumnSpacing="10">
+                <Border Grid.Column="0"
+                        Grid.RowSpan="3"
+                        HeightRequest="150"
+                        WidthRequest="120"
+                        StrokeShape="RoundRectangle 5"
+                        Stroke="#2b2b2b"
+                        StrokeThickness="0"
+                        Padding="0">
+                    <Image Aspect="AspectFill"
+                           HeightRequest="150"
+                           WidthRequest="120">
+                        <Image.Source>
+                            <UriImageSource Uri="{Binding Media.Thumbnail}"/>
+                        </Image.Source>
+                    </Image>
+                </Border>
+
+                <Grid Grid.Row="0"
+                      Grid.Column="1"
+                      ColumnDefinitions="*, Auto">
+                    <Label Grid.Column="0"
+                           Text="{Binding Media.DisplayTitle, FallbackValue='Movie Title'}"
+                           FontSize="17"/>
+                    <Button Grid.Column="1"
+                            Text="X"
+                            FontSize="17"
+                            BackgroundColor="#525252"
+                            TextColor="White"
+                            VerticalOptions="Start"
+                            HeightRequest="25"
+                            WidthRequest="25"
+                            CornerRadius="25"
+                            Padding="0"/>
+                </Grid>
+
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding Media.ReleaseDate}"
+                       FontSize="10"
+                       TextColor="#9d9d9d"/>
+
+                <Label Grid.Row="2"
+                       Grid.Column="1"
+                       Text="{Binding Media.Overview}"
+                       FontSize="11"
+                       MaxLines="4"/>
+
+            </Grid>
+
+            <Grid ColumnDefinitions="*, *, *, *"
+                  Margin="0, 20, 0, 5">
+                
+                <Grid Grid.Column="0" 
+                      RowDefinitions="Auto, Auto">
+                    <Ellipse Style="{StaticResource iconBg}"/>
+                    <Image Source="play"
+                           Style="{StaticResource iconImg}">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="White" />
+                        </Image.Behaviors>
+                    </Image>
+                    <Label Grid.Row="1"
+                           Text="Play"
+                           Style="{StaticResource iconBtnText}"/>
+                </Grid>
+
+                <Grid Grid.Column="1" 
+                      RowDefinitions="Auto, Auto">
+                    <Ellipse Style="{StaticResource iconBg}"/>
+                    <Image Source="download"
+                           Style="{StaticResource iconImg}">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="White" />
+                        </Image.Behaviors>
+                    </Image>
+                    <Label Grid.Row="1"
+                           Text="Download"
+                           Style="{StaticResource iconBtnText}"/>
+                </Grid>
+                <Grid Grid.Column="2" 
+                      RowDefinitions="Auto, Auto">
+                    <Ellipse Style="{StaticResource iconBg}"/>
+                    <Image Source="plus"
+                           Style="{StaticResource iconImg}">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="White" />
+                        </Image.Behaviors>
+                    </Image>
+                    <Label Grid.Row="1"
+                           Text="My List"
+                           Style="{StaticResource iconBtnText}"/>
+                </Grid>
+
+                <Grid Grid.Column="3" 
+                      RowDefinitions="Auto, Auto">
+                    <Ellipse Style="{StaticResource iconBg}"/>
+                    <Image Source="share"
+                           Style="{StaticResource iconImg}">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="White" />
+                        </Image.Behaviors>
+                    </Image>
+                    <Label Grid.Row="1"
+                           Text="Share"
+                           Style="{StaticResource iconBtnText}"/>
+                </Grid>
+            </Grid>
+
+            <BoxView HeightRequest="2"
+                     BackgroundColor="#9d9d9d"
+                     Color="#9d9d9d"
+                     Margin="5, 0"
+                     />
+
+            <Grid ColumnDefinitions="Auto, *, Auto"
+                  Padding="15"
+                  ColumnSpacing="5">
+                <Grid  Grid.Column="0"
+                    HorizontalOptions="Center">
+                    <Ellipse Stroke="White"
+                            HeightRequest="22"
+                            WidthRequest="22"
+                            StrokeThickness="2"/>
+                    <Label Text="i"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Bold"/>
+                </Grid>
+
+                <Label Grid.Column="1"
+                       Text="Details &amp; More"/>
+
+                <Label Grid.Column="2"
+                       Text=">"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </Border>
+    
+</ContentView>

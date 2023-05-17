@@ -63,7 +63,8 @@
                       ColumnDefinitions="*, Auto">
                     <Label Grid.Column="0"
                            Text="{Binding Media.DisplayTitle, FallbackValue='Movie Title'}"
-                           FontSize="17"/>
+                           FontSize="17"
+                           LineBreakMode="CharacterWrap"/>
                     <Button Grid.Column="1"
                             Text="X"
                             FontSize="17"
@@ -73,7 +74,10 @@
                             HeightRequest="25"
                             WidthRequest="25"
                             CornerRadius="25"
-                            Padding="0"/>
+                            Padding="0"
+                            Margin="5"
+                            Command="{Binding ClosedCommand}"
+                            Clicked="Button_Clicked"/>
                 </Grid>
 
                 <Label Grid.Row="1"

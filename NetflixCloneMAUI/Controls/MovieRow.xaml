@@ -25,6 +25,10 @@
                     <Border StrokeShape="RoundRectangle 5"
                             Stroke="Black"
                             StrokeThickness="1">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type controls:MovieRow}}, Path=MediaDetailsCommand}"
+                                                  CommandParameter="{Binding .}"/>
+                        </Border.GestureRecognizers>
                         <Grid>
                             <Image Aspect="AspectFill"
                                HeightRequest="150"

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NetflixCloneMAUI.ViewModels"
+             x:Class="NetflixCloneMAUI.Pages.CategoriesPage"
+             Shell.PresentationMode="ModalAnimated"
+             BackgroundColor="Transparent"
+             x:DataType="vm:CategoriesViewModel">
+
+    <Grid>
+        <BoxView Color="Black"
+                 Opacity="0.9"/>
+
+        <CollectionView ItemsSource="{Binding Categories}"
+                        Margin="0, 30, 0, 90">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <Label Text="{Binding .}"
+                           HorizontalTextAlignment="Center"
+                           FontSize="18"
+                           />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <Button Text="X"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                WidthRequest="50"
+                HeightRequest="50"
+                CornerRadius="50"
+                BackgroundColor="White"
+                TextColor="Black"
+                FontSize="25"
+                Padding="0"
+                FontAttributes="Bold"
+                Margin="10"
+                Clicked="CloseButton_Clicked">
+            <Button.Shadow>
+                <Shadow Brush="Red"
+                        Offset="-10, 0"
+                        Radius="40"
+                        Opacity="1"/>
+            </Button.Shadow>
+        </Button>
+
+    </Grid>
+    
+</ContentPage>

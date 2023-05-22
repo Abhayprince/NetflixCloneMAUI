@@ -31,6 +31,10 @@
                         <Image.Source>
                             <UriImageSource Uri="{Binding TrendingMovie.Thumbnail}"/>
                         </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectMediaCommand}"
+                                                  CommandParameter="{Binding TrendingMovie}"/>
+                        </Image.GestureRecognizers>
                     </Image>
 
                     <Grid VerticalOptions="Start"
@@ -91,6 +95,10 @@
                             <Label Text="Info"
                                    HorizontalOptions="Center"
                                    Margin="0, 10, 0, 0"/>
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectMediaCommand}"
+                                                  CommandParameter="{Binding TrendingMovie}"/>
+                            </VerticalStackLayout.GestureRecognizers>
                         </VerticalStackLayout>
                         
                     </HorizontalStackLayout>
@@ -99,16 +107,20 @@
 
                 <controls:MovieRow Heading="Top Rated" 
                                    Movies="{Binding TopRated}" 
-                                   IsLarge="False" />
+                                   IsLarge="False"
+                                   MediaSelected="MovieRow_MediaSelected"/>
                 <controls:MovieRow Heading="Originals" 
                                    Movies="{Binding NetflixOriginals}" 
-                                   IsLarge="True" />
+                                   IsLarge="True"
+                                   MediaSelected="MovieRow_MediaSelected"/>
                 <controls:MovieRow Heading="Trending" 
                                    Movies="{Binding Trending}" 
-                                   IsLarge="False" />
+                                   IsLarge="False"
+                                   MediaSelected="MovieRow_MediaSelected"/>
                 <controls:MovieRow Heading="Action" 
                                    Movies="{Binding ActionMovies}" 
-                                   IsLarge="False" />
+                                   IsLarge="False"
+                                   MediaSelected="MovieRow_MediaSelected"/>
 
             </VerticalStackLayout>
         </ScrollView>
@@ -136,7 +148,9 @@
         </Grid>
 
         <controls:MovieInfoBox Media="{Binding SelectedMedia}"
-                               VerticalOptions="End"/>
+                               VerticalOptions="End"
+                               IsVisible="{Binding ShowMovieInfoBox}"
+                               Closed="MovieInfoBox_Closed"/>
     </Grid>
 
 </ContentPage>

@@ -1,5 +1,4 @@
-﻿using Java.Net;
-using NetflixCloneMAUI.Models;
+﻿using NetflixCloneMAUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +37,19 @@ namespace NetflixCloneMAUI.Services
             await GetMediasAsync(TmdbUrls.NetflixOriginals);
         public async Task<IEnumerable<Media>> GetActionAsync() =>
             await GetMediasAsync(TmdbUrls.Action);
+
+        public async Task<IEnumerable<Video>?> GetTrailersAsync(int id, string type = "movie")
+        {
+            var videosWrapper = await HttpClient.GetFromJsonAsync<VideosWrapper>(
+                $"{TmdbUrls.GetTrailers(id, type)}&api_key={ApiKey}");
+
+            if(videosWrapper?.results?.Length > 0)
+            {
+                var trailerTeasers = videosWrapper.results.Where(VideosWrapper.FilterTrailerTeasers);
+                return trailerTeasers;
+            }
+            return null;
+        }
 
         private async Task<IEnumerable<Media>> GetMediasAsync(string url)
         {

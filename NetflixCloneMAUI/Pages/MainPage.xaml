@@ -47,7 +47,11 @@
                             <Label Text="Movies"
                                    Style="{StaticResource MenuLabel}"/>
                             <Label Text="Categories"
-                                   Style="{StaticResource MenuLabel}"/>
+                                   Style="{StaticResource MenuLabel}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CategoriesMenu_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
                         </FlexLayout>
                     </Grid>
 

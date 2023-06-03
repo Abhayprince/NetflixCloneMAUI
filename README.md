@@ -28,10 +28,11 @@ Details Page - Similar Movies Tab                    | More Like This
 - Create an account on https://www.themoviedb.org and generate API Key
 
 - Go to `TmdbService.cs` class file in `Services/TmdbService.cs`
-- Add your Tmdb Api Key in `Line No. 13` and uncomment this line
+- Uncomment the `Line No. 13`
 
-    ``` private const string ApiKey = "738b6d8d99b51339705b1037c981a488"; // generate it from tmdb website ```
+  ``` private const string ApiKey = "738b6d8d99b51339705b1037c981a488"; // generate it from tmdb website ```
     
+- Change the ApiKey to the Api Key you grabbed from Tmdb Website
 - Build the solution/project
 - Run the solution
 

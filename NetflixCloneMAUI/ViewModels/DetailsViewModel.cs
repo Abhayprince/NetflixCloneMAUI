@@ -92,6 +92,10 @@ namespace NetflixCloneMAUI.ViewModels
             await Shell.Current.GoToAsync(nameof(DetailsPage), true, parameters);
         }
 
+        [RelayCommand]
+        private void SetMainTrailer(string videoKey) => 
+            MainTrailerUrl = GenerateYoutubeUrl(videoKey);
+
         private static string GenerateYoutubeUrl(string videoKey) =>
             $"https://www.youtube.com/embed/{videoKey}";
     }

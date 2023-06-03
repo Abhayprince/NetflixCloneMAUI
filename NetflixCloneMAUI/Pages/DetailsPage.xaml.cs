@@ -45,4 +45,9 @@ public partial class DetailsPage : ContentPage
         similarTabIndicator.Color = Colors.Red;
         similarTabContent.IsVisible = true;
     }
+
+    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        await pageScrollView.ScrollToAsync(0, 0, animated: true);
+    }
 }

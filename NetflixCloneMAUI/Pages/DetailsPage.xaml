@@ -41,7 +41,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <ScrollView BackgroundColor="Black">
+    <ScrollView BackgroundColor="Black"
+                x:Name="pageScrollView">
         <Grid>
             <ActivityIndicator Color="White"
                                VerticalOptions="Center"
@@ -200,6 +201,11 @@
                                     
                                     <Label Grid.Row="1" 
                                            Text="{Binding name}" />
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:DetailsViewModel}}, Path=SetMainTrailerCommand}"
+                                                              CommandParameter="{Binding key}"
+                                                              Tapped="TapGestureRecognizer_Tapped"/>
+                                    </Grid.GestureRecognizers>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

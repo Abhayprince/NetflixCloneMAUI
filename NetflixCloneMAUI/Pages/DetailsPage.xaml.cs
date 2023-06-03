@@ -18,4 +18,22 @@ public partial class DetailsPage : ContentPage
         base.OnAppearing();
         await _viewModel.InitializeAsync();
     }
+
+    private void TrailersTab_Tapped(object sender, TappedEventArgs e)
+    {
+        similarTabIndicator.Color = Colors.Black;
+        similarTabContent.IsVisible = false;
+
+        trailersTabIndicator.Color = Colors.Red;
+        trailersTabContent.IsVisible = true;
+    }
+
+    private void SimilarTab_Tapped(object sender, TappedEventArgs e)
+    {
+        trailersTabIndicator.Color = Colors.Black;
+        trailersTabContent.IsVisible = false;
+
+        similarTabIndicator.Color = Colors.Red;
+        similarTabContent.IsVisible = true;
+    }
 }
